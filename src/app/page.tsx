@@ -1,5 +1,6 @@
 import { Header } from "@/components/organisms/Header";
 import { Hero } from "@/components/organisms/Hero";
+import { ColorPalette } from "@/components/organisms/ColorPalette";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <ColorPalette />
       </main>
     </div>
   );

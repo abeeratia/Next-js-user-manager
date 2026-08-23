@@ -1,0 +1,253 @@
+export const primaryColors = [
+  {
+    name: "Primary 50",
+    hex: "#e3f8e7",
+    label: "Light Green",
+    className: "bg-primary-50",
+  },
+  {
+    name: "Primary 100",
+    hex: "#d4f2d8",
+    label: "Pale Green",
+    className: "bg-primary-100",
+  },
+  {
+    name: "Primary 200",
+    hex: "#b5e8bd",
+    label: "Soft Green",
+    className: "bg-primary-200",
+  },
+  {
+    name: "Primary 300",
+    hex: "#89d697",
+    label: "Fresh Green",
+    className: "bg-primary-300",
+  },
+  {
+    name: "Primary 400",
+    hex: "#69b979",
+    label: "Medium Green",
+    className: "bg-primary-400",
+  },
+  {
+    name: "Primary 500",
+    hex: "#4a9767",
+    label: "Forest Green",
+    className: "bg-primary-500",
+  },
+  {
+    name: "Primary 600",
+    hex: "#15803d",
+    label: "Deep Green",
+    className: "bg-primary-600",
+    lightText: true,
+  },
+  {
+    name: "Primary 700",
+    hex: "#0e6a32",
+    label: "Dark Green",
+    className: "bg-primary-700",
+    lightText: true,
+  },
+  {
+    name: "Primary 800",
+    hex: "#0a5528",
+    label: "Very Dark Green",
+    className: "bg-primary-800",
+    lightText: true,
+  },
+  {
+    name: "Primary 900",
+    hex: "#06401e",
+    label: "Deep Forest",
+    className: "bg-primary-900",
+    lightText: true,
+  },
+];
+
+export const secondaryColors = [
+  {
+    name: "Secondary 100",
+    hex: "#e6e5ff",
+    label: "Light Purple",
+    className: "bg-secondary-100",
+  },
+  {
+    name: "Secondary 200",
+    hex: "#c7c6ff",
+    label: "Soft Purple",
+    className: "bg-secondary-200",
+  },
+  {
+    name: "Secondary 300",
+    hex: "#a9a7ff",
+    label: "Medium Purple",
+    className: "bg-secondary-300",
+  },
+  {
+    name: "Secondary 400",
+    hex: "#8a88ff",
+    label: "Purple",
+    className: "bg-secondary-400",
+  },
+  {
+    name: "Secondary 500",
+    hex: "#6b69ff",
+    label: "Violet",
+    className: "bg-secondary-500",
+    lightText: true,
+  },
+  {
+    name: "Secondary 600",
+    hex: "#4c4aff",
+    label: "Deep Violet",
+    className: "bg-secondary-600",
+    lightText: true,
+  },
+  {
+    name: "Secondary 700",
+    hex: "#2a2947",
+    label: "Dark Blue/Purple",
+    className: "bg-secondary-700",
+    lightText: true,
+  },
+  {
+    name: "Secondary 800",
+    hex: "#1f1e35",
+    label: "Very Dark Blue",
+    className: "bg-secondary-800",
+    lightText: true,
+  },
+  {
+    name: "Secondary 900",
+    hex: "#141323",
+    label: "Navy Blue",
+    className: "bg-secondary-900",
+    lightText: true,
+  },
+];
+
+export const accentColors = [
+  {
+    name: "Accent 100",
+    hex: "#ffe8d6",
+    label: "Light Orange",
+    className: "bg-accent-100",
+  },
+  {
+    name: "Accent 200",
+    hex: "#ffd1ad",
+    label: "Pale Orange",
+    className: "bg-accent-200",
+  },
+  {
+    name: "Accent 300",
+    hex: "#ffba85",
+    label: "Soft Orange",
+    className: "bg-accent-300",
+  },
+  {
+    name: "Accent 400",
+    hex: "#ffa35c",
+    label: "Orange",
+    className: "bg-accent-400",
+  },
+  {
+    name: "Accent 500",
+    hex: "#e67e22",
+    label: "Warm Orange",
+    className: "bg-accent-500",
+    lightText: true,
+  },
+  {
+    name: "Accent 600",
+    hex: "#cc6a1e",
+    label: "Deep Orange",
+    className: "bg-accent-600",
+    lightText: true,
+  },
+  {
+    name: "Accent 700",
+    hex: "#b3561a",
+    label: "Dark Orange",
+    className: "bg-accent-700",
+    lightText: true,
+  },
+  {
+    name: "Accent 800",
+    hex: "#994316",
+    label: "Burnt Orange",
+    className: "bg-accent-800",
+    lightText: true,
+  },
+  {
+    name: "Accent 900",
+    hex: "#802f12",
+    label: "Rust",
+    className: "bg-accent-900",
+    lightText: true,
+  },
+];
+
+export const neutralColors = [
+  {
+    name: "Slate 50",
+    hex: "#F8FAFC",
+    label: "",
+    className: "bg-slate-50 border border-slate-200",
+  },
+  {
+    name: "Slate 100",
+    hex: "#F1F5F9",
+    label: "",
+    className: "bg-slate-100 border border-slate-200",
+  },
+  {
+    name: "Slate 200",
+    hex: "#E2E8F0",
+    label: "",
+    className: "bg-slate-200",
+  },
+  {
+    name: "Slate 300",
+    hex: "#CBD5E1",
+    label: "",
+    className: "bg-slate-300",
+  },
+  {
+    name: "Slate 400",
+    hex: "#94A3B8",
+    label: "",
+    className: "bg-slate-400",
+  },
+  {
+    name: "Slate 500",
+    hex: "#64748B",
+    label: "",
+    className: "bg-slate-500",
+  },
+  {
+    name: "Slate 600",
+    hex: "#475569",
+    label: "",
+    className: "bg-slate-600",
+  },
+  {
+    name: "Slate 700",
+    hex: "#334155",
+    label: "",
+    className: "bg-slate-700",
+  },
+  {
+    name: "Slate 800",
+    hex: "#1E293B",
+    label: "",
+    className: "bg-slate-800",
+  },
+  {
+    name: "Slate 900",
+    hex: "#0F172A",
+    label: "",
+    className: "bg-slate-900",
+  },
+];
