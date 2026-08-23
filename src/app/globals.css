@@ -33,7 +33,6 @@
   --color-accent-300: #ffba85;
   --color-accent-400: #ffa35c;
   --color-accent-500: #e67e22;
-  --color-accent2-500: oklch(65% .25 40);
   --color-accent-600: #cc6a1e;
   --color-accent-700: #b3561a;
   --color-accent-800: #994316;
@@ -53,6 +52,7 @@
   --color-neutral-950: #020617;
 
   /* Semantic UI Colors */
+    --color-accent2-500: oklch(65% .25 40);
   --color-background: oklch(98% 0 255);
   --color-foreground: var(--color-neutral-950);
   --color-muted: var(--color-neutral-100);
