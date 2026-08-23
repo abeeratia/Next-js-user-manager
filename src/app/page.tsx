@@ -2,6 +2,7 @@ import { Header } from "@/components/organisms/Header";
 import { Hero } from "@/components/organisms/Hero";
 import { ColorPalette } from "@/components/organisms/ColorPalette";
 import { TypographyPalette } from "@/components/organisms/TypographyPalette";
+import { SpacingPalette } from "@/components/organisms/SpacingPalette";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <ColorPalette />
         <TypographyPalette />
+        <SpacingPalette />
       </main>
     </div>
   );
