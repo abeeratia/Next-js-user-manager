@@ -1,7 +1,13 @@
+import { Header } from "@/components/organisms/Header";
+import { Hero } from "@/components/organisms/Hero";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>React Stepper Challenge</h1>
-    </main>
+    <div className="flex min-h-screen flex-col bg-background">
+      <Header />
+      <main className="flex-1">
+        <Hero />
+      </main>
+    </div>
   );
 }
