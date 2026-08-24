@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, ChevronRight, ChevronLeft, Check } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, Check, Loader2 } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 
@@ -43,11 +43,53 @@ export function LiveMultiStepForm() {
     mode: "onChange",
   });
 
-  const { control, handleSubmit, formState, trigger, watch, reset } = form;
-  const { errors, isValid } = formState;
+  const {
+    control,
+    handleSubmit,
+    formState,
+    trigger,
+    watch,
+    reset,
+    getValues,
+    setValue,
+    setError,
+    clearErrors,
+    register,
+    unregister,
+    setFocus,
+    resetField,
+  } = form;
+
+  const {
+    errors,
+    isValid,
+    isDirty,
+    dirtyFields,
+    touchedFields,
+    isSubmitted,
+    isSubmitSuccessful,
+    isSubmitting,
+    submitCount,
+    isValidating,
+    isLoading: isFormLoading,
+    disabled,
+  } = formState;
+
   const formValues = watch();
 
-  const mutation = useMutation({
+  const {
+    data: mutationData,
+    error: mutationError,
+    isError: isMutationError,
+    isIdle: isMutationIdle,
+    isPending: isMutationPending,
+    isSuccess: isMutationSuccess,
+    status: mutationStatus,
+    mutate,
+    mutateAsync,
+    reset: resetMutation,
+    variables: mutationVariables,
+  } = useMutation({
     mutationFn: async (data: UserFormValues) => {
       return await apiService.createUser(data);
     },
@@ -58,7 +100,7 @@ export function LiveMultiStepForm() {
   });
 
   const onSubmit = (data: any) => {
-    mutation.mutate(data);
+    mutate(data);
   };
 
   const handleNext = async () => {
@@ -446,14 +488,16 @@ export function LiveMultiStepForm() {
               <Button
                 key="submit-button"
                 type="submit"
-                disabled={mutation.isPending}
+                disabled={isMutationPending}
                 className="px-6 bg-green-700 hover:bg-green-800 flex items-center gap-2 text-white"
               >
-                {mutation.isPending ? (
-                  "Submitting..."
+                {isMutationPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" /> Submitting...
+                  </>
                 ) : (
                   <>
-                    <Check className="h-4 w-4" /> Submit User
+                    Submit <Check className="h-4 w-4" />
                   </>
                 )}
               </Button>
