@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Header } from "@/components/organisms/Header";
+import { Footer } from "@/components/organisms/Footer";
 import { UsersTable } from "@/components/organisms/UsersTable";
 import Link from "next/link";
 import { Button } from "@/components/atoms/Button";
@@ -28,6 +29,7 @@ export default function UsersPage() {
           <UsersTable />
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

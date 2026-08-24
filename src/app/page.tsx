@@ -11,6 +11,7 @@ import { ComponentFeaturesPalette } from "@/components/organisms/ComponentFeatur
 import { CustomSelectPalette } from "@/components/organisms/CustomSelectPalette";
 import { PagesPalette } from "@/components/organisms/PagesPalette";
 import { LiveMultiStepForm } from "@/components/organisms/LiveMultiStepForm";
+import { Footer } from "@/components/organisms/Footer";
 
 export default function Home() {
   return (
@@ -27,10 +28,11 @@ export default function Home() {
         <CustomSelectPalette />
         <ComponentFeaturesPalette />
         <PagesPalette />
-        <section className="mb-12 pt-18 pb-12 px-4 sm:px-6 lg:px-8  w-full">
+        <section className="mb-12 pt-18 pb-12 px-4 sm:px-6 lg:px-8 w-full">
           <LiveMultiStepForm />
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
