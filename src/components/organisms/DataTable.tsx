@@ -18,7 +18,7 @@ import { UserModel } from "@/schemas/user.schema"
 import { apiService } from "@/services/api"
 
 export function DataTable() {
-  const { data, isLoading } = useQuery<{ data: UserModel[] }>({
+  const { data, isLoading, isError, refetch, isRefetching } = useQuery<{ data: UserModel[] }>({
     queryKey: ["users"],
     queryFn: async () => {
       return await apiService.getUsersWithCacheBuster();
@@ -39,7 +39,18 @@ export function DataTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {isLoading ? (
+        {isError ? (
+          <TableRow>
+            <TableCell colSpan={5} className="h-24 text-center">
+              <div className="flex flex-col items-center justify-center gap-2">
+                <span className="text-destructive">Failed to load users.</span>
+                <Button variant="outline" size="sm" onClick={() => refetch()} disabled={isRefetching}>
+                  {isRefetching ? "Retrying..." : "Try Again"}
+                </Button>
+              </div>
+            </TableCell>
+          </TableRow>
+        ) : isLoading ? (
           <TableRow>
             <TableCell colSpan={5} className="h-24 text-center">
               Loading users...

@@ -16,6 +16,7 @@ import { useDebounce } from "@/hooks/use-debounce"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 import { InfiniteScrollSelectFieldProps } from "@/types/select"
 import { apiService } from "@/services/api"
+import { Button } from "@/components/atoms/Button"
 
 export function InfiniteScrollSelectField({
   id,
@@ -38,6 +39,9 @@ export function InfiniteScrollSelectField({
     isFetching,
     isFetchingNextPage,
     status,
+    isError,
+    refetch,
+    isRefetching
   } = useInfiniteQuery({
     queryKey: ["countries", debouncedSearch],
     queryFn: async ({ pageParam = 1 }) => {
@@ -106,6 +110,14 @@ export function InfiniteScrollSelectField({
                 <div className="p-4 flex items-center justify-center text-slate-500">
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />
                   Loading...
+                </div>
+              )}
+              {status === "error" && (
+                <div className="p-4 flex flex-col items-center justify-center text-slate-500 gap-2">
+                  <span className="text-destructive text-sm">Failed to load</span>
+                  <Button variant="outline" size="sm" onClick={(e) => { e.preventDefault(); refetch(); }} disabled={isRefetching}>
+                    {isRefetching ? "Retrying..." : "Retry"}
+                  </Button>
                 </div>
               )}
               {status === "success" && options.length === 0 && (

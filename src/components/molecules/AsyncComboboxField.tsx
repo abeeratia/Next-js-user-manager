@@ -15,6 +15,7 @@ import {
 import { useDebounce } from "@/hooks/use-debounce"
 import { User, AsyncComboboxFieldProps } from "@/types/select"
 import { apiService } from "@/services/api"
+import { Button } from "@/components/atoms/Button"
 
 export function AsyncComboboxField({
   id,
@@ -30,7 +31,7 @@ export function AsyncComboboxField({
   const [searchTerm, setSearchTerm] = React.useState("")
   const debouncedSearch = useDebounce(searchTerm, 300)
 
-  const { data: users, isLoading } = useQuery<User[]>({
+  const { data: users, isLoading, isError, refetch, isRefetching } = useQuery<User[]>({
     queryKey: ["users", debouncedSearch],
     queryFn: async () => {
       const json = await apiService.searchUsers(debouncedSearch);
@@ -90,7 +91,15 @@ export function AsyncComboboxField({
                   Loading...
                 </div>
               )}
-              {!isLoading && users?.length === 0 && (
+              {isError && (
+                <div className="p-4 flex flex-col items-center justify-center text-slate-500 gap-2">
+                  <span className="text-destructive text-sm">Failed to load</span>
+                  <Button variant="outline" size="sm" onClick={(e) => { e.preventDefault(); refetch(); }} disabled={isRefetching}>
+                    {isRefetching ? "Retrying..." : "Retry"}
+                  </Button>
+                </div>
+              )}
+              {!isLoading && !isError && users?.length === 0 && (
                 <CommandEmpty>No users found.</CommandEmpty>
               )}
               <CommandGroup>

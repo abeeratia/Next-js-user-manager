@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { UserModel } from "@/schemas/user.schema";
 import { cn } from "@/lib/utils";
 import { apiService } from "@/services/api";
+import { Button } from "@/components/atoms/Button";
 
 const columnHelper = createColumnHelper<UserModel>();
 
@@ -42,7 +43,7 @@ const columns = [
 ];
 
 export function UsersTable() {
-  const { data, isLoading, isError } = useQuery<{ data: UserModel[] }>({
+  const { data, isLoading, isError, refetch, isRefetching } = useQuery<{ data: UserModel[] }>({
     queryKey: ["users"],
     queryFn: async () => {
       return await apiService.getUsers();
@@ -62,7 +63,14 @@ export function UsersTable() {
   }
 
   if (isError) {
-    return <div className="p-8 text-center text-destructive">Failed to load users.</div>;
+    return (
+      <div className="p-8 flex flex-col items-center justify-center gap-4">
+        <div className="text-center text-destructive">Failed to load users.</div>
+        <Button variant="outline" onClick={() => refetch()} disabled={isRefetching}>
+          {isRefetching ? "Retrying..." : "Try Again"}
+        </Button>
+      </div>
+    );
   }
 
   return (
