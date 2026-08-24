@@ -3,7 +3,7 @@
 @theme {
   --color-brand: oklch(0.5 0.18 152 / 1);
 
-  --color-primary-50: #e3f8e7;
+  --color-primary-50: oklch(98.112% .02081 147.9);
   --color-primary-100: #d4f2d8;
   --color-primary-200: #b5e8bd;
   --color-primary-300: #89d697;

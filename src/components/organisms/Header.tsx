@@ -9,9 +9,9 @@ export function Header() {
         <Logo />
         <div className="flex items-center gap-8">
           <NavLinks />
-          <Button variant="brand">Live Form</Button>
+          <Button variant="buttonLogo">Live Form</Button>
         </div>
       </div>
     </header>
-  )
+  );
 }
