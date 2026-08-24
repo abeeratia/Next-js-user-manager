@@ -4,7 +4,7 @@ import { FeatureCard } from "@/components/molecules/FeatureCard";
 
 export function ComponentFeaturesPalette() {
   return (
-    <section className="mb-12 px-4 sm:px-4 lg:px-10">
+    <section id="templates" className="mb-12 px-4 sm:px-4 lg:px-10">
       <div className="rounded-xl border-2 border-slate-100 bg-white p-6 shadow-sm">
         <h4 className="mb-6 text-xl font-bold text-green-800">
           Component Features

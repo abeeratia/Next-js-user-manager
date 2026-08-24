@@ -8,7 +8,7 @@ import {
 
 export function ColorPalette() {
   return (
-    <section className="mx-auto w-full max-w-7xl px-8  py-16 sm:px-10 lg:px-12">
+    <section id="design-system" className="mx-auto w-full max-w-7xl px-8 py-16 sm:px-10 lg:px-12">
       <div className="flex flex-col gap-10">
         <div>
           <h2 className="text-3xl font-bold text-slate-900">Design System</h2>
