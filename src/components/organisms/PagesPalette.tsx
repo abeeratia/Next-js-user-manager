@@ -9,7 +9,7 @@ import Link from "next/link";
 export function PagesPalette() {
   return (
     <section id="pages" className="mb-12 pt-18 pb-12">
-      <div className="pt-18 pb-12 border-t border-slate-200 bg-white">
+      <div className="pt-18 pb-12 px-4 sm:px-6 lg:px-8 border-t border-slate-200 bg-white">
         <h3 className="mb-8 text-3xl font-bold text-slate-900">Pages</h3>
 
         {/* Success Modal Section */}

@@ -14,7 +14,7 @@ export function OrganismsPalette() {
 
   return (
     <section id="organisms" className="mb-12 pb-12">
-      <div className="mx-auto pt-18 pb-12 bg-white">
+      <div className="mx-auto pt-18 pb-12 px-4 sm:px-6 lg:px-8 bg-white">
         <h3 className="mb-8 text-3xl font-bold text-slate-900">Organisms</h3>
 
         <div className="mb-12 rounded-md border border-primary-300 bg-primary-50 p-4">

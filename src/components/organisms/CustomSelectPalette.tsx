@@ -38,7 +38,7 @@ export function CustomSelectPalette() {
 
   return (
     <section className="mb-12 ">
-      <div className="mx-auto border-2 rounded-xl border-slate-200 pt-18 pb-12 bg-white">
+      <div className="mx-auto border-2 rounded-xl border-slate-200 pt-18 pb-12 px-4 sm:px-6 lg:px-8 bg-white">
         <h3 className="mb-8 text-3xl font-bold text-slate-900">
           Custom Select Components
         </h3>
