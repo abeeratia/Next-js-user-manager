@@ -13,7 +13,7 @@ import {
 import { Avatar } from "@/components/atoms/Avatar"
 import { Badge } from "@/components/atoms/Badge"
 import { Button } from "@/components/atoms/Button"
-import { Eye, SquarePen, Trash2 } from "lucide-react"
+import { Eye, SquarePen, Trash2, Loader2 } from "lucide-react"
 import { UserModel } from "@/schemas/user.schema"
 import { apiService } from "@/services/api"
 
@@ -53,7 +53,10 @@ export function DataTable() {
         ) : isLoading ? (
           <TableRow>
             <TableCell colSpan={5} className="h-24 text-center">
-              Loading users...
+              <div className="flex items-center justify-center text-slate-500">
+                <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                Loading users...
+              </div>
             </TableCell>
           </TableRow>
         ) : users.length === 0 ? (

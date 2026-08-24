@@ -12,6 +12,7 @@ import { UserModel } from "@/schemas/user.schema";
 import { cn } from "@/lib/utils";
 import { apiService } from "@/services/api";
 import { Button } from "@/components/atoms/Button";
+import { Loader2 } from "lucide-react";
 
 const columnHelper = createColumnHelper<UserModel>();
 
@@ -59,7 +60,12 @@ export function UsersTable() {
   });
 
   if (isLoading) {
-    return <div className="p-8 text-center text-slate-500">Loading users...</div>;
+    return (
+      <div className="p-8 flex items-center justify-center text-slate-500">
+        <Loader2 className="h-5 w-5 animate-spin mr-2" />
+        Loading users...
+      </div>
+    );
   }
 
   if (isError) {
