@@ -6,6 +6,8 @@ import { SpacingPalette } from "@/components/organisms/SpacingPalette";
 import { AtomsPalette } from "@/components/organisms/AtomsPalette";
 import { MoleculesPalette } from "@/components/organisms/MoleculesPalette";
 
+import { OrganismsPalette } from "@/components/organisms/OrganismsPalette";
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -17,6 +19,7 @@ export default function Home() {
         <SpacingPalette />
         <AtomsPalette />
         <MoleculesPalette />
+        <OrganismsPalette />
       </main>
     </div>
   );

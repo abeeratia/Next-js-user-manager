@@ -44,7 +44,7 @@ export function StepCircle({
 
   if (!content) {
     if (state === "completed") {
-      const iconSize = size === "sm" ? 14 : size === "lg" ? 20 : 16;
+      const iconSize = size === "sm" ? 14 : size === "lg" ? 16 : 14;
       content = <Check size={iconSize} />;
     } else if (stepNumber !== undefined) {
       content = stepNumber;
