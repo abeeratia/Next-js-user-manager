@@ -12,8 +12,7 @@ const buttonVariants = cva(
         default: "bg-primary text-white hover:bg-primary/90",
         buttonLogo:
           "rounded-xl bg-primary-600 text-white hover:bg-primary-700 transition-colors",
-        primary:
-          "bg-primary-600 text-white hover:bg-primary-700 shadow-sm",
+        primary: "bg-primary-600 text-white hover:bg-primary-700 shadow-sm",
         brand:
           "text-base cursor-pointer rounded-xl bg-primary-700 text-white hover:bg-primary-800",
         destructive:
@@ -22,10 +21,8 @@ const buttonVariants = cva(
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
           "border-2 border-primary-600 bg-white text-primary-600 hover:bg-primary-50",
-        ghost:
-          "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
-        accent:
-          "bg-accent2-500 hover:bg-accent-600 text-white shadow-sm",
+        ghost: "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
+        accent: "bg-accent2-500 hover:bg-accent-600 text-white shadow-sm",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

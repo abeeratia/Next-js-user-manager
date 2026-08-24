@@ -4,6 +4,7 @@ import { ColorPalette } from "@/components/organisms/ColorPalette";
 import { TypographyPalette } from "@/components/organisms/TypographyPalette";
 import { SpacingPalette } from "@/components/organisms/SpacingPalette";
 import { AtomsPalette } from "@/components/organisms/AtomsPalette";
+import { MoleculesPalette } from "@/components/organisms/MoleculesPalette";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <TypographyPalette />
         <SpacingPalette />
         <AtomsPalette />
+        <MoleculesPalette />
       </main>
     </div>
   );
