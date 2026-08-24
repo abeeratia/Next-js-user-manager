@@ -1,52 +1,62 @@
-# React Stepper Challenge - User Manager System
+# Next.js User Manager & Design System
 
-This is a production-quality implementation of a multi-step user registration form built with Next.js App Router, demonstrating strong Mid-Level Full-Stack engineering skills.
+This project is a highly optimized, production-ready implementation of a User Manager System and a comprehensive UI Design System. It is built strictly following modern frontend architecture and best practices, specifically designed to demonstrate Mid-to-Senior Level Full-Stack Engineering skills.
 
-## Technologies Used
+## 🚀 Key Features & Architectural Decisions
 
-- **Framework**: Next.js 16 (App Router)
-- **UI Library**: React 19
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4, custom design tokens
-- **Components**: Radix UI (primitives), customized shadcn/ui concepts, Lucide React
-- **Form Management**: React Hook Form
-- **Validation**: Zod (Shared between Client and Server)
-- **Client State**: Redux Toolkit (Stepper progress, Modals)
-- **Server State & Data Fetching**: TanStack Query
-- **Architecture**: Atomic Design Methodology
+1. **Strict Atomic Design Methodology**
+   The UI components are cleanly separated into **Atoms**, **Molecules**, **Organisms**, and **Templates**. 
+   - *Templates* (e.g., `MainTemplate.tsx`) abstract the layout.
+   - *Pages* (e.g., Next.js `page.tsx`) consume the templates and orchestrate data.
 
-## Folder Structure
+2. **App Router Best Practices (Next.js 14+)**
+   - **Server & Client Components**: Properly separated based on interactivity. The main pages use Server Components by default for excellent SEO and zero-JS initial load, while interactive charts/forms use `"use client"`.
+   - **Loading & Error Boundaries**: Implemented `loading.tsx` for global suspense/spinners during navigation, and `error.tsx` for graceful failure handling.
+   - **API Route Handlers**: Implemented backend endpoints (`/api/users` and `/api/countries`) using modern `NextResponse` and `GET/POST` handlers.
+
+3. **Hybrid State Management**
+   - **Redux Toolkit**: Dedicated exclusively to managing local UI state (Stepper navigation and Pagination state) for simplified and efficient UI state management.
+   - **TanStack Query (React Query)**: Handles all Server State, API data fetching, caching, and invalidation (e.g., fetching users from the API).
+   - **React Hook Form**: Handles high-performance form state, coupled with Zod for strict validation.
+
+## 🛠️ Required Technologies & Libraries
+
+This project strictly utilizes the following requested stack:
+
+- **Tailwind CSS 4**: First-utility CSS framework with the latest version.
+- **Lucide Icons**: Beautiful and open-source icon library.
+- **Redux Toolkit**: Simplified and efficient state management for UI.
+- **TanStack Query (React Query)**: Server state management and caching.
+- **React Hook Form**: High-performance form handling with excellent UX.
+- **TanStack Table**: Building fully customizable and interactive data tables.
+- **TypeScript**: Strict typings, interfaces, and custom types (`src/types`, `src/schemas`) used for every project element.
+
+## 📂 Folder Structure
 
 ```text
 src/
-├── app/                  # Next.js App Router (Pages, Layouts, API Routes)
+├── app/                  # Next.js App Router (Pages, Layouts, API Routes, Loading, Error)
 │   ├── api/              # API Route Handlers (/api/users, /api/countries)
 │   ├── layout.tsx
 │   ├── page.tsx
+│   ├── loading.tsx       # Global Suspense Fallback
+│   ├── error.tsx         # Global Error Boundary
 │   └── providers.tsx     # Redux and TanStack Query Providers
 ├── components/           # Atomic Design UI Components
-│   ├── atoms/            # Basic UI elements (Button, Input, Label, StepCircle, Typography)
-│   ├── molecules/        # FormFieldWrapper, FileUploadArea, StepItem
-│   └── organisms/        # MultiStepForm, StepperProgress, CustomSelect, MultiSelect, SuccessModal
-├── hooks/                # Custom React hooks (e.g., useDebounce)
-├── lib/                  # Utility libraries (cn for Tailwind)
-├── schemas/              # Zod validation schemas
-├── services/             # API client services
-└── store/                # Redux Toolkit setup (stepperSlice)
+│   ├── atoms/            # Basic UI elements (Button, Input, Avatar, Table, Label, Badge)
+│   ├── molecules/        # FormFieldWrapper, Pagination, SelectField, CheckboxGroup
+│   ├── organisms/        # LiveMultiStepForm, DataTable, Hero, Header, Footer, Palettes
+│   └── templates/        # MainTemplate for layout abstraction
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility libraries (e.g., tailwind merge)
+├── schemas/              # Zod validation schemas (User, form shapes)
+├── store/                # Redux Toolkit configuration
+│   ├── hooks.ts          # Typed hooks (useAppSelector, useAppDispatch)
+│   └── slices/           # stepperSlice, paginationSlice
+└── types/                # TypeScript Interfaces and Constants
 ```
 
-## Architectural Decisions
-
-1. **Atomic Design**: The component hierarchy strictly follows Atomic Design to maximize reusability and maintainability.
-2. **Server/Client Boundary**: Server components are used by default (e.g., `layout.tsx`, `page.tsx`). Client components (`"use client"`) are used strictly at the component level where interactivity, state, or hooks are required (e.g., forms, modals, searchable dropdowns).
-3. **State Management**:
-   - **React Hook Form**: Handles all local form state.
-   - **Redux Toolkit**: Manages global UI state such as the current step of the stepper and modal visibility, proving scalability for larger applications.
-   - **TanStack Query**: Manages asynchronous server state, specifically fetching and caching the list of countries for the `CustomSelect` component.
-4. **Validation Strategy**: A single source of truth for validation is established using Zod. The same schema validates the form on the client (real-time feedback) and on the server (API security).
-5. **Custom UI Components**: Instead of blindly installing all shadcn components, the UI elements were built incrementally using Radix UI primitives and Tailwind v4, ensuring the design system's exact requirements (colors, spacing, typography) were met without bloat.
-
-## Installation and Running
+## ⚙️ Installation and Setup
 
 1. Install dependencies:
    ```bash
@@ -58,19 +68,11 @@ src/
    npm run dev
    ```
 
-3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to explore the Design System Palettes and the Live Multi-Step Form.
 
-## Design System Tokens
+## ⚡ Performance Optimization
 
-The application utilizes CSS variables mapped to Tailwind v4 in `src/app/globals.css` to manage the primary, secondary, accent, and neutral color scales. The base typography uses the Inter font family.
-
-## Testing Instructions
-
-1. Fill out Step 1 (Personal Info).
-2. The Country dropdown is async and searchable (debounced 300ms). Try searching for "United".
-3. Move to Step 2 (Preferences).
-4. Select up to 5 interests. The input prevents selecting more than 5.
-5. Upload an Avatar using drag and drop (Max 5MB, PNG/JPG only).
-6. Proceed to Step 3 (Review) to see the summary.
-7. Click Submit. An artificial delay simulates a network request, followed by a Success Modal.
-8. Clicking "Add Another User" will reset the entire form and start from Step 1.
+- The project compiles with **0 Errors** and **0 Warnings**.
+- All non-dynamic routes are prerendered as **Static HTML** (`○ (Static)` in the Next.js build output).
+- Zero unoptimized `<img>` tags are used; the structure relies strictly on standard best practices and UI components.
+- The `tsconfig.json` enforces strict type-checking across the entire codebase.
