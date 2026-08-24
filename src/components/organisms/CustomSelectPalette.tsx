@@ -43,7 +43,7 @@ export function CustomSelectPalette() {
           Custom Select Components
         </h3>
 
-        <div className="rounded-xl border border-primary-300 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-primary-300 bg-white p-4 sm:p-6 shadow-sm">
           <div className="mb-8 flex items-center gap-2 text-green-700">
             <Filter className="h-5 w-5" />
             <h4 className="text-xl font-bold">Select Component Examples</h4>

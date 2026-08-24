@@ -13,7 +13,7 @@ export function PagesPalette() {
         <h3 className="mb-8 text-3xl font-bold text-slate-900">Pages</h3>
 
         {/* Success Modal Section */}
-        <div className="mb-8 rounded-xl border border-green-100 bg-[#f4fcf7] p-6 shadow-sm">
+        <div className="mb-8 rounded-xl border border-green-100 bg-[#f4fcf7] p-4 sm:p-6 shadow-sm">
           <h4 className="mb-6 text-lg font-bold text-slate-900">
             Success Modal
           </h4>
@@ -29,12 +29,12 @@ export function PagesPalette() {
                 The user has been added to the system. You can now view their
                 profile or continue adding more users.
               </p>
-              <div className="flex justify-center gap-4">
-                <Button variant="outline" className="px-6 border-slate-200">
+              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                <Button variant="outline" className="w-full sm:w-auto px-6 border-slate-200">
                   Close
                 </Button>
-                <Link href="/users" passHref>
-                  <Button className="px-6 bg-green-700 hover:bg-green-800 text-white">
+                <Link href="/users" passHref className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto px-6 bg-green-700 hover:bg-green-800 text-white">
                     View Users
                   </Button>
                 </Link>
@@ -44,14 +44,14 @@ export function PagesPalette() {
         </div>
 
         {/* Component Examples Section */}
-        <div className="rounded-xl border border-green-100 bg-[#f4fcf7] p-6 shadow-sm">
+        <div className="rounded-xl border border-green-100 bg-[#f4fcf7] p-4 sm:p-6 shadow-sm">
           <h4 className="mb-6 text-lg font-bold text-slate-900">
             Component Examples
           </h4>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Example Card */}
-            <div className="rounded-xl border border-slate-100 bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-slate-100 bg-white p-4 sm:p-6 shadow-sm">
               <div className="mb-6 flex items-center justify-between">
                 <h5 className="font-bold text-slate-900">Example Card</h5>
                 <div className="h-4 w-4 rounded-full bg-green-700"></div>
@@ -76,7 +76,7 @@ export function PagesPalette() {
             </div>
 
             {/* Form Example */}
-            <div className="rounded-xl border border-slate-100 bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-slate-100 bg-white p-4 sm:p-6 shadow-sm">
               <div className="mb-6 flex items-center justify-between">
                 <h5 className="font-bold text-slate-900">Form Example</h5>
                 <div className="h-4 w-4 rounded-full bg-green-700"></div>

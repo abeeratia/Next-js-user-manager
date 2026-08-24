@@ -138,7 +138,7 @@ export function LiveMultiStepForm() {
           <p className="mb-8 text-base text-slate-600 leading-relaxed px-2">
             The user has been added to the system. You can now view their profile or continue adding more users.
           </p>
-          <div className="flex flex-col-reverse sm:flex-row justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <Button 
               variant="outline" 
               className="w-full sm:w-auto px-8 py-3 text-base font-semibold border-slate-200 text-slate-900 rounded-xl" 
