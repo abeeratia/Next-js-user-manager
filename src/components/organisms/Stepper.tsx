@@ -34,7 +34,7 @@ export function Stepper({
 
           return (
             <React.Fragment key={index}>
-              <div className="flex flex-col items-center gap-3 relative z-10 w-24">
+              <div className="flex flex-col items-center gap-3 relative z-10 w-14 sm:w-24">
                 <StepCircle
                   state={state}
                   size="sm"
@@ -52,7 +52,7 @@ export function Stepper({
               {index < steps.length - 1 && (
                 <div 
                   className={cn(
-                    "flex-1 h-1.5 mt-[21px] mx-2 sm:mx-4 transition-colors duration-300",
+                    "flex-1 h-1.5 mt-[21px] mx-1 sm:mx-4 transition-colors duration-300 min-w-[8px]",
                     isCompleted ? "bg-primary-600" : "bg-slate-200"
                   )}
                 />
