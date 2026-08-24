@@ -109,9 +109,9 @@ export function AtomsPalette() {
           </div>
 
           <div className="mb-12 rounded-md border border-primary-300 bg-primary-50 p-4">
-            <h4 className="text-2xl font-semibold mb-6 ">Buttons</h4>
-            <div className="flex flex-wrap items-center gap-6">
-              <Button variant="primary" size="xl">
+            <h4 className="text-2xl font-semibold mb-6 text-slate-900">Buttons</h4>
+            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-4 sm:gap-6">
+              <Button variant="primary" size="lg">
                 Primary Button
               </Button>
               <Button variant="secondary" size="lg">

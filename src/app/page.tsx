@@ -7,6 +7,8 @@ import { AtomsPalette } from "@/components/organisms/AtomsPalette";
 import { MoleculesPalette } from "@/components/organisms/MoleculesPalette";
 
 import { OrganismsPalette } from "@/components/organisms/OrganismsPalette";
+import { ComponentFeaturesPalette } from "@/components/organisms/ComponentFeaturesPalette";
+import { CustomSelectPalette } from "@/components/organisms/CustomSelectPalette";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
         <AtomsPalette />
         <MoleculesPalette />
         <OrganismsPalette />
+        <CustomSelectPalette />
+        <ComponentFeaturesPalette />
       </main>
     </div>
   );
