@@ -9,6 +9,8 @@ import { MoleculesPalette } from "@/components/organisms/MoleculesPalette";
 import { OrganismsPalette } from "@/components/organisms/OrganismsPalette";
 import { ComponentFeaturesPalette } from "@/components/organisms/ComponentFeaturesPalette";
 import { CustomSelectPalette } from "@/components/organisms/CustomSelectPalette";
+import { PagesPalette } from "@/components/organisms/PagesPalette";
+import { LiveMultiStepForm } from "@/components/organisms/LiveMultiStepForm";
 
 export default function Home() {
   return (
@@ -24,6 +26,10 @@ export default function Home() {
         <OrganismsPalette />
         <CustomSelectPalette />
         <ComponentFeaturesPalette />
+        <PagesPalette />
+        <section className="mb-12 pt-18 pb-12 px-4 sm:px-6 lg:px-8  w-full">
+          <LiveMultiStepForm />
+        </section>
       </main>
     </div>
   );

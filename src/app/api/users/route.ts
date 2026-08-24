@@ -1,18 +1,15 @@
 import { NextResponse } from "next/server";
+import { UserModel } from "@/schemas/user.schema";
 import { User } from "@/types/select";
+import { MOCK_USERS } from "@/types/constants";
 
-const MOCK_USERS: User[] = [
-  { id: "1", name: "Alice Smith", email: "alice@example.com" },
-  { id: "2", name: "Bob Jones", email: "bob@example.com" },
-  { id: "3", name: "Charlie Brown", email: "charlie@example.com" },
-  { id: "4", name: "David Williams", email: "david@example.com" },
-  { id: "5", name: "Eva Davis", email: "eva@example.com" },
-  { id: "6", name: "Frank Miller", email: "frank@example.com" },
-  { id: "7", name: "Grace Wilson", email: "grace@example.com" },
-  { id: "8", name: "Hannah Moore", email: "hannah@example.com" },
-  { id: "9", name: "Ian Taylor", email: "ian@example.com" },
-  { id: "10", name: "Jane Anderson", email: "jane@example.com" },
-];
+export const dynamic = "force-dynamic";
+
+const globalForUsers = global as unknown as { globalUsers: UserModel[] | undefined };
+if (!globalForUsers.globalUsers) {
+  globalForUsers.globalUsers = [...MOCK_USERS];
+}
+let globalUsers = globalForUsers.globalUsers;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -21,17 +18,45 @@ export async function GET(request: Request) {
   // Simulate network delay for realistic async behavior
   await new Promise((resolve) => setTimeout(resolve, 600));
 
-  let filteredUsers = MOCK_USERS;
+  let filteredUsers = globalUsers;
 
   if (search) {
-    filteredUsers = MOCK_USERS.filter(
+    filteredUsers = globalUsers.filter(
       (user) =>
-        user.name.toLowerCase().includes(search) ||
+        user.fullName.toLowerCase().includes(search) ||
         user.email.toLowerCase().includes(search)
     );
   }
 
+  // Also support the old format for Select Component if needed, but here we return full models
   return NextResponse.json({
-    data: filteredUsers.slice(0, 5), // Return top 5 matches
+    data: filteredUsers,
   });
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    
+    // Basic validation / just assigning ID
+    const newUser: UserModel = {
+      ...body,
+      id: Math.random().toString(36).substring(2, 9),
+      createdAt: new Date().toISOString(),
+    };
+
+    // Add to the front of the list in the global object
+    globalForUsers.globalUsers = [newUser, ...(globalForUsers.globalUsers || [])];
+    globalUsers = globalForUsers.globalUsers;
+
+    // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    return NextResponse.json({ success: true, data: newUser }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, message: "Failed to create user" },
+      { status: 400 }
+    );
+  }
 }

@@ -68,7 +68,7 @@ export function AsyncComboboxField({
               open && "border-primary-600 ring-2 ring-primary-400"
             )}
           >
-            {selectedUser ? selectedUser.name : <span className="text-slate-400">{placeholder}</span>}
+            {selectedUser ? ((selectedUser as any).fullName || selectedUser.name) : <span className="text-slate-400">{placeholder}</span>}
             <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </button>
         </PopoverTrigger>
@@ -82,6 +82,7 @@ export function AsyncComboboxField({
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+            
             <CommandList>
               {isLoading && (
                 <div className="p-4 flex items-center justify-center text-slate-500">
@@ -95,22 +96,22 @@ export function AsyncComboboxField({
               <CommandGroup>
                 {!isLoading &&
                   users?.map((user) => (
-                    <CommandItem
-                      key={user.id}
-                      value={user.id}
-                      onSelect={() => {
-                        onChange(user.id === value ? "" : user.id)
-                        setOpen(false)
-                      }}
-                    >
-                      <div className="flex flex-col">
-                        <span className={cn(user.id === value ? "text-primary-800 font-medium" : "text-slate-800")}>
-                          {user.name}
-                        </span>
-                        <span className="text-xs text-slate-500">{user.email}</span>
-                      </div>
-                    </CommandItem>
-                  ))}
+                  <CommandItem
+                    key={user.id}
+                    value={user.id.toString()}
+                    onSelect={(currentValue) => {
+                      onChange(currentValue === value ? "" : currentValue)
+                      setOpen(false)
+                    }}
+                  >
+                    <div className="flex flex-col">
+                      <span className={cn(user.id === value ? "text-primary-800 font-medium" : "text-slate-800")}>
+                        {(user as any).fullName || user.name}
+                      </span>
+                      {user.email && <span className="text-xs text-slate-500">{user.email}</span>}
+                    </div>
+                  </CommandItem>
+                ))}
               </CommandGroup>
             </CommandList>
           </Command>

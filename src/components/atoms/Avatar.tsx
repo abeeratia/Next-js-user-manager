@@ -25,7 +25,7 @@ const avatarVariants = cva(
 )
 
 export interface AvatarProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "color">,
     VariantProps<typeof avatarVariants> {
   initials: string
 }
