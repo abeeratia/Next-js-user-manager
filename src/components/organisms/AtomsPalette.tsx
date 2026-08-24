@@ -123,7 +123,7 @@ export function AtomsPalette() {
               <Button
                 variant="ghost"
                 size="lg"
-                className="text-white hover:text-white/90 hover:bg-white/10"
+                className="hover:bg-slate-200"
                 icon={UserPlus}
               >
                 With Icon
