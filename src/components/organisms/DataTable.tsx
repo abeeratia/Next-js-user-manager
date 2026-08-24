@@ -15,14 +15,13 @@ import { Badge } from "@/components/atoms/Badge"
 import { Button } from "@/components/atoms/Button"
 import { Eye, SquarePen, Trash2 } from "lucide-react"
 import { UserModel } from "@/schemas/user.schema"
+import { apiService } from "@/services/api"
 
 export function DataTable() {
   const { data, isLoading } = useQuery<{ data: UserModel[] }>({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(`/api/users?_t=${Date.now()}`, { cache: "no-store" })
-      if (!res.ok) throw new Error("Failed to fetch")
-      return res.json()
+      return await apiService.getUsersWithCacheBuster();
     },
   })
 

@@ -10,6 +10,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { UserModel } from "@/schemas/user.schema";
 import { cn } from "@/lib/utils";
+import { apiService } from "@/services/api";
 
 const columnHelper = createColumnHelper<UserModel>();
 
@@ -44,9 +45,7 @@ export function UsersTable() {
   const { data, isLoading, isError } = useQuery<{ data: UserModel[] }>({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("/api/users");
-      if (!res.ok) throw new Error("Failed to fetch users");
-      return res.json();
+      return await apiService.getUsers();
     },
   });
 

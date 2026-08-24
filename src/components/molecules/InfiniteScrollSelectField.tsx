@@ -14,8 +14,8 @@ import {
 } from "@/components/atoms/Command"
 import { useDebounce } from "@/hooks/use-debounce"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
-
 import { InfiniteScrollSelectFieldProps } from "@/types/select"
+import { apiService } from "@/services/api"
 
 export function InfiniteScrollSelectField({
   id,
@@ -41,9 +41,7 @@ export function InfiniteScrollSelectField({
   } = useInfiniteQuery({
     queryKey: ["countries", debouncedSearch],
     queryFn: async ({ pageParam = 1 }) => {
-      const res = await fetch(`/api/countries?search=${debouncedSearch}&page=${pageParam}&limit=15`)
-      const json = await res.json()
-      return json
+      return await apiService.getCountries(debouncedSearch, pageParam);
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {

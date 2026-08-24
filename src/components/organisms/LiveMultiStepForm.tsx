@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { userFormSchema, UserFormValues } from "@/schemas/user.schema";
+import { apiService } from "@/services/api";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { nextStep, prevStep, resetStep } from "@/store/slices/stepperSlice";
 import { Stepper } from "@/components/organisms/Stepper";
@@ -48,15 +49,7 @@ export function LiveMultiStepForm() {
 
   const mutation = useMutation({
     mutationFn: async (data: UserFormValues) => {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to create user");
-      }
-      return response.json();
+      return await apiService.createUser(data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });

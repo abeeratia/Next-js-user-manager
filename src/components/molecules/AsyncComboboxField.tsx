@@ -14,6 +14,7 @@ import {
 } from "@/components/atoms/Command"
 import { useDebounce } from "@/hooks/use-debounce"
 import { User, AsyncComboboxFieldProps } from "@/types/select"
+import { apiService } from "@/services/api"
 
 export function AsyncComboboxField({
   id,
@@ -32,9 +33,8 @@ export function AsyncComboboxField({
   const { data: users, isLoading } = useQuery<User[]>({
     queryKey: ["users", debouncedSearch],
     queryFn: async () => {
-      const res = await fetch(`/api/users?search=${debouncedSearch}`)
-      const json = await res.json()
-      return json.data
+      const json = await apiService.searchUsers(debouncedSearch);
+      return json.data;
     },
   })
 
