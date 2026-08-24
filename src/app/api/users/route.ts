@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { UserModel } from "@/schemas/user.schema";
 import { User } from "@/types/select";
 import { MOCK_USERS } from "@/types/constants";
@@ -18,10 +19,14 @@ export async function GET(request: Request) {
   // Simulate network delay for realistic async behavior
   await new Promise((resolve) => setTimeout(resolve, 600));
 
-  let filteredUsers = globalForUsers.globalUsers || [];
+  const cookieStore = await cookies();
+  const customUsersStr = cookieStore.get("custom_users")?.value;
+  const customUsers: UserModel[] = customUsersStr ? JSON.parse(customUsersStr) : [];
+  
+  let filteredUsers = [...customUsers, ...(globalForUsers.globalUsers || [])];
 
   if (search) {
-    filteredUsers = (globalForUsers.globalUsers || []).filter(
+    filteredUsers = filteredUsers.filter(
       (user) =>
         user.fullName.toLowerCase().includes(search) ||
         user.email.toLowerCase().includes(search)
@@ -45,9 +50,20 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
     };
 
-    // Add to the front of the list in the global object
+    // Add to the front of the list in the global object as fallback
     globalForUsers.globalUsers = [newUser, ...(globalForUsers.globalUsers || [])];
     globalUsers = globalForUsers.globalUsers;
+
+    // Add to cookies for persistence
+    const cookieStore = await cookies();
+    const customUsersStr = cookieStore.get("custom_users")?.value;
+    const customUsers: UserModel[] = customUsersStr ? JSON.parse(customUsersStr) : [];
+    
+    const updatedCustomUsers = [newUser, ...customUsers];
+    cookieStore.set("custom_users", JSON.stringify(updatedCustomUsers), {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+    });
 
     // Simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 800));
