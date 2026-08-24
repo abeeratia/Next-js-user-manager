@@ -18,10 +18,10 @@ export async function GET(request: Request) {
   // Simulate network delay for realistic async behavior
   await new Promise((resolve) => setTimeout(resolve, 600));
 
-  let filteredUsers = globalUsers;
+  let filteredUsers = globalForUsers.globalUsers || [];
 
   if (search) {
-    filteredUsers = globalUsers.filter(
+    filteredUsers = (globalForUsers.globalUsers || []).filter(
       (user) =>
         user.fullName.toLowerCase().includes(search) ||
         user.email.toLowerCase().includes(search)

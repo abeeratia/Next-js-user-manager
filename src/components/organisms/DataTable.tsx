@@ -20,7 +20,7 @@ export function DataTable() {
   const { data, isLoading } = useQuery<{ data: UserModel[] }>({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("/api/users")
+      const res = await fetch(`/api/users?_t=${Date.now()}`, { cache: "no-store" })
       if (!res.ok) throw new Error("Failed to fetch")
       return res.json()
     },
