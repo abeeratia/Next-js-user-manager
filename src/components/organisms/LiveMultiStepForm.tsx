@@ -9,6 +9,8 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { userFormSchema, UserFormValues } from "@/schemas/user.schema";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { nextStep, prevStep, resetStep } from "@/store/slices/stepperSlice";
 import { Stepper } from "@/components/organisms/Stepper";
 import { Button } from "@/components/atoms/Button";
 import { Input } from "@/components/atoms/Input";
@@ -21,22 +23,9 @@ import { STEPS, GENDERS, CATEGORIES, INTERESTS } from "@/types/constants";
 
 export function LiveMultiStepForm() {
   const queryClient = useQueryClient();
-  const [currentStep, setCurrentStepState] = React.useState(1);
+  const currentStep = useAppSelector((state) => state.stepper.currentStep);
+  const dispatch = useAppDispatch();
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
-  
-  // Sync step with global cache so OrganismsPalette can read it
-  const setCurrentStep = React.useCallback((step: number | ((prev: number) => number)) => {
-    setCurrentStepState((prev) => {
-      const nextStep = typeof step === "function" ? step(prev) : step;
-      queryClient.setQueryData(["currentStep"], nextStep);
-      return nextStep;
-    });
-  }, [queryClient]);
-
-  // Initialize global step on mount
-  React.useEffect(() => {
-    queryClient.setQueryData(["currentStep"], currentStep);
-  }, []);
 
   const form = useForm<UserFormValues>({
     resolver: zodResolver(userFormSchema) as any,
@@ -88,18 +77,18 @@ export function LiveMultiStepForm() {
     }
 
     const isStepValid = await trigger(fieldsToValidate);
-    if (isStepValid) {
-      setCurrentStep((prev) => Math.min(prev + 1, 3));
+    if (isStepValid && currentStep < 3) {
+      dispatch(nextStep());
     }
   };
 
   const handleBack = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
+    dispatch(prevStep());
   };
 
   const resetForm = () => {
     reset();
-    setCurrentStep(1);
+    dispatch(resetStep());
     setShowSuccessModal(false);
   };
 

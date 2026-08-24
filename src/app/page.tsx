@@ -1,4 +1,4 @@
-import { Header } from "@/components/organisms/Header";
+import { MainTemplate } from "@/components/templates/MainTemplate";
 import { Hero } from "@/components/organisms/Hero";
 import { ColorPalette } from "@/components/organisms/ColorPalette";
 import { TypographyPalette } from "@/components/organisms/TypographyPalette";
@@ -11,28 +11,23 @@ import { ComponentFeaturesPalette } from "@/components/organisms/ComponentFeatur
 import { CustomSelectPalette } from "@/components/organisms/CustomSelectPalette";
 import { PagesPalette } from "@/components/organisms/PagesPalette";
 import { LiveMultiStepForm } from "@/components/organisms/LiveMultiStepForm";
-import { Footer } from "@/components/organisms/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <ColorPalette />
-        <TypographyPalette />
-        <SpacingPalette />
-        <AtomsPalette />
-        <MoleculesPalette />
-        <OrganismsPalette />
-        <CustomSelectPalette />
-        <ComponentFeaturesPalette />
-        <PagesPalette />
-        <section id="live-form" className="mb-12 pt-18 pb-12 px-4 sm:px-6 lg:px-8 w-full">
-          <LiveMultiStepForm />
-        </section>
-      </main>
-      <Footer />
-    </div>
+    <MainTemplate>
+      <Hero />
+      <ColorPalette />
+      <TypographyPalette />
+      <SpacingPalette />
+      <AtomsPalette />
+      <MoleculesPalette />
+      <OrganismsPalette />
+      <CustomSelectPalette />
+      <ComponentFeaturesPalette />
+      <PagesPalette />
+      <section id="live-form" className="mb-12 pt-18 pb-12 px-4 sm:px-6 lg:px-8 w-full">
+        <LiveMultiStepForm />
+      </section>
+    </MainTemplate>
   );
 }
