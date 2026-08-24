@@ -8,8 +8,8 @@ import Link from "next/link";
 
 export function PagesPalette() {
   return (
-    <section id="pages" className="mb-12 pt-18 pb-12 px-4 sm:px-4 lg:px-5">
-      <div className="pt-18 pb-12 px-4 sm:px-6 lg:px-8 border-t border-slate-200 bg-white mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="pages" className="mb-12 pt-18 pb-12">
+      <div className="pt-18 pb-12 border-t border-slate-200 bg-white">
         <h3 className="mb-8 text-3xl font-bold text-slate-900">Pages</h3>
 
         {/* Success Modal Section */}
@@ -25,7 +25,7 @@ export function PagesPalette() {
               <h5 className="mb-2 text-xl font-bold text-slate-900">
                 User Added Successfully!
               </h5>
-              <p className="mb-8 text-sm text-slate-500 leading-relaxed px-2">
+              <p className="mb-8 text-sm text-slate-500 leading-relaxed">
                 The user has been added to the system. You can now view their
                 profile or continue adding more users.
               </p>
@@ -69,7 +69,7 @@ export function PagesPalette() {
                 </p>
               </div>
 
-              <Button className="mb-4 w-full bg-green-700 hover:bg-green-800 text-white">
+              <Button className="mb-4 bg-green-700 hover:bg-green-800 text-white">
                 Primary Button
               </Button>
               <Input placeholder="Input field" className="w-full bg-white" />

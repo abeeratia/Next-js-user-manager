@@ -41,8 +41,8 @@ const ICONS = [
 
 export function AtomsPalette() {
   return (
-    <section id="atoms" className="mb-12 pt-18 pb-12 px-4 sm:px-4 lg:px-5">
-      <div className="pt-18 pb-12 px-4 sm:px-6 lg:px-8 border-t border-slate-200 bg-white mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="atoms" className="mb-12 pt-18 pb-12">
+      <div className="pt-18 pb-12 border-t border-slate-200 bg-white">
         <div className="flex flex-col">
           <h3 className="text-3xl font-bold mb-8 text-slate-900">Atoms</h3>
 
@@ -97,7 +97,7 @@ export function AtomsPalette() {
               {ICONS.map(({ name, icon: Icon }) => (
                 <div
                   key={name}
-                  className="flex h-[88px] w-full flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 "
+                  className="flex h-[88px] flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 "
                 >
                   <Icon className="text-primary-600" size={24} />
                   <span className="text-md font-medium text-slate-900">

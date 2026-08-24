@@ -25,7 +25,7 @@ export default function Home() {
       <CustomSelectPalette />
       <ComponentFeaturesPalette />
       <PagesPalette />
-      <section id="live-form" className="mb-12 pt-18 pb-12 px-4 sm:px-6 lg:px-8 w-full">
+      <section id="live-form" className="mb-12 pt-18 pb-12">
         <LiveMultiStepForm />
       </section>
     </MainTemplate>
