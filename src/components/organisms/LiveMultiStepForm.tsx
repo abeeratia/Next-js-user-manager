@@ -95,24 +95,24 @@ export function LiveMultiStepForm() {
   if (showSuccessModal) {
     return (
       <div className="flex justify-center p-4 sm:p-8">
-        <div className="w-full max-w-md rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-sm">
+        <div className="w-full max-w-md rounded-2xl border border-slate-100 bg-white p-6 sm:p-8 text-center shadow-sm mx-auto">
           <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100/50">
             <CheckCircle2 className="h-8 w-8 text-green-600" strokeWidth={2.5} />
           </div>
           <h5 className="mb-4 text-2xl font-bold text-slate-900">User Added Successfully!</h5>
-          <p className="mb-10 text-base text-slate-600 leading-relaxed px-2">
+          <p className="mb-8 text-base text-slate-600 leading-relaxed px-2">
             The user has been added to the system. You can now view their profile or continue adding more users.
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col-reverse sm:flex-row justify-center gap-3 sm:gap-4">
             <Button 
               variant="outline" 
-              className="px-8 py-3 text-base font-semibold border-slate-200 text-slate-900 rounded-xl" 
+              className="w-full sm:w-auto px-8 py-3 text-base font-semibold border-slate-200 text-slate-900 rounded-xl" 
               onClick={() => setShowSuccessModal(false)}
             >
               Close
             </Button>
             <Button 
-              className="px-8 py-3 text-base font-semibold bg-green-700 hover:bg-green-800 text-white rounded-xl" 
+              className="w-full sm:w-auto px-8 py-3 text-base font-semibold bg-green-700 hover:bg-green-800 text-white rounded-xl" 
               onClick={resetForm}
             >
               Add Another User
